@@ -1,0 +1,87 @@
+{
+  "name": "crastos/updown-sdk",
+  "description": "I got bored so I wrote an SDK for updown.io.",
+  "keywords": [
+    "laravel",
+    "updown",
+    "status page"
+  ],
+  "homepage": "https://github.com/crastos/updown-sdk",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "QWp6t",
+      "email": "hi@qwp6t.me",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "^8.1"
+  },
+  "require-dev": {
+    "guzzlehttp/guzzle": "^7.5",
+    "illuminate/contracts": "^9.0",
+    "illuminate/http": "^9.45",
+    "laravel/pint": "^1.0",
+    "nunomaduro/collision": "^6.0",
+    "nunomaduro/larastan": "^2.0.1",
+    "orchestra/testbench": "^7.0",
+    "pestphp/pest": "^1.21",
+    "pestphp/pest-plugin-laravel": "^1.1",
+    "php-curl-class/php-curl-class": "^9.12",
+    "phpstan/extension-installer": "^1.1",
+    "phpstan/phpstan-deprecation-rules": "^1.0",
+    "phpstan/phpstan-phpunit": "^1.0",
+    "phpunit/phpunit": "^9.5",
+    "ramsey/composer-repl": "^1.4",
+    "spatie/laravel-ray": "^1.26",
+    "spatie/pest-plugin-snapshots": "^1.1",
+    "symfony/http-client": "^6.2"
+  },
+  "suggest": {
+    "guzzlehttp/guzzle": "Guzzle HTTP client.",
+    "illuminate/http": "Laravel HTTP client.",
+    "php-curl-class/php-curl-class": "PHP Curl HTTP client.",
+    "symfony/http-client": "Symfony HTTP client."
+  },
+  "autoload": {
+    "psr-4": {
+      "Crastos\\Updown\\": "src"
+    },
+    "files": [
+      "src/helpers.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Crastos\\Updown\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "post-autoload-dump": "@php ./vendor/bin/testbench package:discover --ansi",
+    "analyse": "vendor/bin/phpstan analyse",
+    "test": "vendor/bin/pest",
+    "test-coverage": "vendor/bin/pest --coverage",
+    "format": "vendor/bin/pint"
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "pestphp/pest-plugin": true,
+      "phpstan/extension-installer": true,
+      "ramsey/composer-repl": true
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Crastos\\Updown\\UpdownServiceProvider"
+      ],
+      "aliases": {
+        "Updown": "Crastos\\Updown\\Facades\\Updown"
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
